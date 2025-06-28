@@ -113,7 +113,7 @@ const Chatbot = () => {
     zIndex={9999}
     p={2}
     border="3px solid rgba(9,9,121,1)"
-    backgroundColor="rgb(15, 15, 157)"
+    backgroundColor="rgb(79, 79, 129)"
   >
     <Box alignSelf="flex-end" >
       <IconButton onClick={() => setIsOpen(false)}>
@@ -145,7 +145,7 @@ const Chatbot = () => {
             key={index}
             sx={{
               display: "flex",
-              bgcolor: msg.role === "user" ? "rgba(2,0,36,1)" : "rgba(137, 232, 251, 0.8)",
+              bgcolor: msg.role === "user" ? "rgb(101, 99, 149)" : "rgba(166, 208, 216, 0.8)",
               alignSelf: msg.role === "user" ? "flex-end" : "flex-start",
               p: 0,
               borderRadius: 3,
