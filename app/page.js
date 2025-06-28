@@ -50,8 +50,8 @@ const router= useRouter();
             <Box sx={{width:{xs:"100%" ,md:"50%"},display:{xs:"none", md:"flex" } }} justifyContent="center" alignItems="center">
 
             <Image
-        src="https://www.unleashedsoftware.com/wp-content/uploads/2024/02/Pillar-Page-Hero-Placeholder-1024x758.png.webp" // Corrected image path
-        alt="Descriptive text for screen readers"
+        src="/inventoryappimage.webp" // Corrected image path
+        alt="Fatima Azeemi Inventory app"
         // style={{maxWidth:"100%", height:"auto"}}
         width={500}
         height={400}

@@ -96,12 +96,14 @@ const Chatbot = () => {
         </IconButton>
       )}
 
-    {isOpen && (<Box position="fixed"
+ {isOpen && (
+  <Box
+    position="fixed"
     top="15%"
     left="67%"
     width="30vw"
     height="80vh"
-    bgcolor="#F3E8FF"
+    bgcolor="white"
     borderRadius={3}
     display="flex"
     flexDirection="column"
@@ -109,83 +111,99 @@ const Chatbot = () => {
     alignItems="center"
     boxShadow={3}
     zIndex={9999}
-    p={2}>
-        
-        <Box alignSelf='flex-end'>
-        <IconButton
-        onClick={()=>setIsOpen(false)}>
-            <CloseIcon sx={{color:'purple'}}/>
-        </IconButton>
-        </Box>
+    p={2}
+    border="3px solid rgba(9,9,121,1)"
+    backgroundColor="rgb(15, 15, 157)"
+  >
+    <Box alignSelf="flex-end" >
+      <IconButton onClick={() => setIsOpen(false)}>
+        <CloseIcon sx={{ color: "white" }} />
+      </IconButton>
+    </Box>
 
-      <Box width='90%' height='65vh' mt={0} mb={3} 
-      display="flex" flexDirection='column'
-       justifyContent="center" alignItems="center" paddingBottom='10px' border="2px solid purple" 
-       backgroundColor='white'
-        borderRadius={3}>
-        <Stack ref={scrollContainerRef} 
-         direction="column" height="80%"
-          sx={{overflowY: "auto", gap:1, m:1, }}
-        >
-          {allMessages.map((msg, index) => (
-
+    <Box
+      width="90%"
+      height="65vh"
+      mt={0}
+      mb={3}
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      border="2px solid rgb(67, 197, 223)"
+      backgroundColor="#f5faff"
+      borderRadius={3}
+    >
+      <Stack
+        ref={scrollContainerRef}
+        direction="column"
+        height="80%"
+        sx={{ overflowY: "auto", gap: 1, m: 1 }}
+      >
+        {allMessages.map((msg, index) => (
+          <Box
+            key={index}
+            sx={{
+              display: "flex",
+              bgcolor: msg.role === "user" ? "rgba(2,0,36,1)" : "rgba(137, 232, 251, 0.8)",
+              alignSelf: msg.role === "user" ? "flex-end" : "flex-start",
+              p: 0,
+              borderRadius: 3,
+              maxWidth: "80%",
+            }}
+          >
             <Box
-              key={index}
-              sx={{
-                display:"flex",
-                bgcolor: msg.role === "user" ? "#694F8E" : "#B692C2",
-                alignSelf: msg.role === "user" ? "flex-end" : "flex-start",
-                p:0,
-                borderRadius:3,
-                maxWidth:'80%',
-              }}
+              color={msg.role === "user" ? "white" : "#000"}
+              textAlign={msg.role === "user" ? "right" : "left"}
+              mx={2}
+              my={1}
             >
-              <Box color="white" 
-              textAlign= {msg.role ==="user"? "right":"left"} mx={2} my={1}>
-                <ReactMarkdown>{msg.content}</ReactMarkdown>
-                </Box>
+              <ReactMarkdown>{msg.content}</ReactMarkdown>
             </Box>
-          ))}
-        </Stack>
-        
-          <Stack px={2} width="100%" direction="row" gap={1}>
+          </Box>
+        ))}
+      </Stack>
 
-          <TextField
+      <Stack px={2} width="100%" direction="row" gap={1}>
+        <TextField
           type="text"
           value={userMessage}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           name="user"
-          
           sx={{
-            flex: 9, // Allows the TextField to take up available space
-            minWidth: 0, // Prevents the TextField from exceeding its container
-            bgcolor:'#EEEEEE' ,
-           ':focused': {
-            border: '2px solid green',
-            // Border color when focused
-          },
+            flex: 9,
+            minWidth: 0,
+            bgcolor: "#EEEEEE",
+            "& .MuiOutlinedInput-root.Mui-focused": {
+              "& fieldset": {
+                borderColor: "rgba(0,212,255,1)",
+              },
+            },
           }}
-          
         />
-        <Button onClick={handleClick} variant="contained" sx={{
-            flex: 1, // Allows the TextField to take up available space
-            minWidth: 0, // Prevents the TextField from exceeding its container
-            bgcolor:"#2E236C",
-            textTransform:"capitalize",
-            borderRadius:2,
-            
-            ':hover':{
-                bgcolor:'#17153B'
-            }
-          }}><Typography fontSize={15}>Send</Typography><SendIcon fontSize="2px"/></Button>
-          </Stack>
+        <Button
+          onClick={handleClick}
+          variant="contained"
+          sx={{
+            flex: 1,
+            minWidth: 0,
+            bgcolor: "rgba(9,9,121,1)",
+            textTransform: "capitalize",
+            borderRadius: 2,
+            ":hover": {
+              bgcolor: "rgba(2,0,36,1)",
+            },
+          }}
+        >
+          <Typography fontSize={15}>Send</Typography>
+          <SendIcon fontSize="2px" />
+        </Button>
+      </Stack>
+    </Box>
+  </Box>
+)}
 
-      </Box>
-    </Box>)
-
-    
-}
 </>
   );
 };
