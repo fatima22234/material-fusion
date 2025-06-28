@@ -6,13 +6,15 @@ import CustomCard from './component/Card';
 import InsightsIcon from '@mui/icons-material/Insights';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import BrowserUpdatedIcon from '@mui/icons-material/BrowserUpdated';
-
+import { useUser} from "@clerk/nextjs";
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 
 
 const Page = () => {
-  
+  const {isSignedIn, isLoaded, user} = useUser();
+
 const router= useRouter();
  const goToInventory=()=>{
    router.push('/inventory')
@@ -39,10 +41,11 @@ const router= useRouter();
            integration to boost efficiency and simplify operations. Streamline your
             processes and make informed decisions effortlessly.
             </Typography>
+                    <Link href={isSignedIn?'/inventory':'/sign-in'} passHref>
             <Button  sx={{position:"relative" ,top:"10%", width:"200px", 
             variant:{sx:'contained', md:'outlined'}, color:{xs:'white'}, border:{xs:"1px solid white"}}} 
             onClick={()=>goToInventory()}
-            >Go To Inventory</Button>
+            >Go To Inventory</Button></Link>
             </Box>
             <Box sx={{width:{xs:"100%" ,md:"50%"},display:{xs:"none", md:"flex" } }} justifyContent="center" alignItems="center">
 

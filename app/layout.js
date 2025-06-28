@@ -1,6 +1,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "./component/Header";
+import Chatbot from "./component/Chat";
+import { Box } from "@mui/material";
+import { ClerkProvider } from "@clerk/nextjs";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -10,11 +14,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
+    <ClerkProvider >
     <html lang="en">
       <body className={inter.className}>
       <Header/>
         {children}
+          <Chatbot/>
+
         </body>
     </html>
+    </ClerkProvider>
   );
 }

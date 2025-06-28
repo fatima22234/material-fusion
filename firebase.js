@@ -7,7 +7,7 @@ import {getFirestore} from "firebase/firestore"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDnHh8MFLwAnSvliuhD9s4p9xXz2gg9W74",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "material-fusion.firebaseapp.com",
   projectId: "material-fusion",
   storageBucket: "material-fusion.appspot.com",
